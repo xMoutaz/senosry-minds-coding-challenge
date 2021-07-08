@@ -50,9 +50,11 @@ export class BingoBoardComponent {
 	public ngOnChanges() : void {
 		this.selectedIndices = Object.create( null );
 		this.spaces = this.selectRandomPhrases();
+		this.selectedIndices[12]=true;
 	}
 
 	public toggleIndex( index: number ) : void {
+		if(index == 12) return;
 		this.selectedIndices[ index ] = ! this.selectedIndices[ index ];
 		this.gameWon = !!this.calculateWinner();
 		if(this.gameWon){this.userWinEvent.emit(this.gameWon);}
