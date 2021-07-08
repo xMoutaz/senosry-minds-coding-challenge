@@ -1,0 +1,3 @@
+<button nbButton *ngIf="!squareValue">{{ squareValue }}</button>
+    <button nbButton hero status="success" *ngIf="squareValue == 'X'">{{ squareValue }}</button>
+    <button nbButton hero status="info" *ngIf="squareValue == 'O'">{{ squareValue }}</button>
