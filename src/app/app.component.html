@@ -1,3 +1,29 @@
-<app-board></app-board>
+<!-- <router-outlet></router-outlet> -->
+<ng-container #confetti></ng-container>
 
-<router-outlet></router-outlet>
+<div *ngIf="( mode === 'play' )" class="content">
+
+	<nav class="actions">
+		<a (click)="gotoMode( 'edit' )">Edit phrases</a>
+	</nav>
+
+	<app-bingo-board
+		(userWinEvent)="surprise()"
+		[phrases]="phrases">
+	</app-bingo-board>
+
+</div>
+
+<div *ngIf="( mode === 'edit' )" class="content">
+
+	<nav class="actions">
+		<a (click)="gotoMode( 'play' )">Back to game</a>
+	</nav>
+
+	<app-form
+		[phrases]="phrases"
+		(phrasesChange)="applyNewPhrases( $event )">
+	</app-form>
+
+</div>
+
